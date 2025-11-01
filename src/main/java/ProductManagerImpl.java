@@ -3,21 +3,27 @@ import types.User;
 import types.Order;
 import java.util.*;
 import java.util.Comparator;
+import org.apache.log4j.Logger;
 
 
-public abstract class ProductManagerImpl implements ProductManager {
+public class ProductManagerImpl implements ProductManager { //Implementamos una fachada
+
+    private static final Logger logger = Logger.getLogger(ProductManagerImpl.class);
+
+    private static ProductManagerImpl instance; //Única instancia: patrón singleton (variable estática)
 
     private List<Product> products;
     private Queue<Order> orders;
     private HashMap<String, User> users;
 
-    public ProductManagerImpl() {
+    private ProductManagerImpl() {
         this.products = new ArrayList<>();
         this.orders = new LinkedList<>();
         this.users = new HashMap<>();
     }
 
     public void addProduct(String id, String name, int numofsales, double price) {
+        logger.info("Se va a añadir el producto" + name + "identificado cómo:" + id + "con" + numofsales + "ventas y un precion de" + price + "euros");
         products.add(new Product(id, name, numofsales, price));
     }
 
@@ -53,7 +59,17 @@ public abstract class ProductManagerImpl implements ProductManager {
     }
 
     public User getUser(String userId){
-        return this.users.get(userId);
+        return this.users.get(userId); //Le paso clave y me da valor simplemente con un get (hashmap)
     }
 
+    public static ProductManagerImpl getInstance(){
+        if(instance == null){
+            instance = new ProductManagerImpl();
+        }
+        return instance;
+    }
+
+
+
 }
+
