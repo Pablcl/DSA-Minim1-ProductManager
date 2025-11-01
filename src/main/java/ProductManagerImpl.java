@@ -22,8 +22,8 @@ public class ProductManagerImpl implements ProductManager { //Implementamos una 
         this.users = new HashMap<>();
     }
 
-    public void addProduct(String id, String name, int numofsales, double price) {
-        logger.info("Se va a añadir el producto" + name + "identificado cómo:" + id + "con" + numofsales + "ventas y un precion de" + price + "euros");
+    public void addProduct(String id, String name, int numofsales, double price) { //Aquí estoy dando de alta un producto al mercado
+        logger.info("Se va a añadir el producto " + name + " identificado cómo: " + id + " con " + numofsales + " ventas y un precio de " + price + "euros");
         products.add(new Product(id, name, numofsales, price));
     }
 
@@ -41,11 +41,11 @@ public class ProductManagerImpl implements ProductManager { //Implementamos una 
         orders.add(order);
     }
 
-    public int numOrders(){
+    public int numOrders(){ //Estos son los pedidos que están pendientes de ser servidos
         return orders.size();
     }
 
-    public Order deliverOrder(){
+    public Order deliverOrder(){ //Sirvo el pedido, lo quito de la cola
         return orders.poll();
     }
 
