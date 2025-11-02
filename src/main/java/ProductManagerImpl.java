@@ -2,7 +2,7 @@ import types.Product;
 import types.User;
 import types.Order;
 import java.util.*;
-import java.util.Comparator;
+import java.util.Comparator; //interfaz comparator
 import org.apache.log4j.Logger;
 
 
@@ -28,13 +28,15 @@ public class ProductManagerImpl implements ProductManager { //Implementamos una 
     }
 
     public List<Product> getProductsByPrice() {
-        products.sort(Comparator.comparing(product -> product.getPrice()));
-        return this.products;
+        List<Product> copiaPrecio = new ArrayList<>(this.products);
+        copiaPrecio.sort(Comparator.comparing(product -> product.getPrice()));
+        return copiaPrecio;
     }
 
     public List<Product> getProductsBySales() {
-        products.sort(Comparator.comparing(Product::getNumofsales).reversed()); //Por defecto ordena de menor a mayor, ponemos reversed para ordenar de mayor a menor
-        return this.products;
+        List<Product> copiaVentas= new ArrayList<>(this.products);
+        copiaVentas.sort(Comparator.comparing(Product::getNumofsales).reversed()); //Por defecto ordena de menor a mayor, ponemos reversed para ordenar de mayor a menor
+        return copiaVentas;
     }
 
     public void addOrder(Order order){ //Añadir una orden a la cola es hacer un push (añadir elemento al final de la cola)
@@ -46,7 +48,12 @@ public class ProductManagerImpl implements ProductManager { //Implementamos una 
     }
 
     public Order deliverOrder(){ //Sirvo el pedido, lo quito de la cola
-        return orders.poll();
+        Order orderAEntregar = orders.poll();
+
+        if (orderAEntregar != null) {
+            orderAEntregar.setServido(true);
+        }
+        return orderAEntregar;
     }
 
     public Product getProduct(String name){

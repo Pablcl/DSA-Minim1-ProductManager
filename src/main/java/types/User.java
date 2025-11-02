@@ -27,6 +27,8 @@ public class User {
     }
     public void addOrder (Order order){
         this.orders.add(order);
-
+    }
+    public List<Order> getOrders(){
+        return this.orders;
     }
 }
