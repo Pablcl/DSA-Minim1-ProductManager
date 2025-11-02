@@ -16,7 +16,7 @@ public class Order {
     }
 
     //digamos que el addProducts y getProducts son como el set y get de un atributo pero es un HashMap
-    public void addProducts(String productName, int quantity){
+    public void addProductsToOrder(String productName, int quantity){
         this.products.put(productName, quantity);
     }
     public HashMap<String, Integer> getProducts(){ //que me de productos de un pedido
