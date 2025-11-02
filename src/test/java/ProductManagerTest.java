@@ -1,5 +1,6 @@
-import types.Order;
-import types.User;
+import edu.upc.dsa.ProductManagerImpl;
+import edu.upc.dsa.types.Order;
+
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;

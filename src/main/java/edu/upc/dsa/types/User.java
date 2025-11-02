@@ -1,4 +1,4 @@
-package types;
+package edu.upc.dsa.types;
 import java.util.*;
 
 public class User {

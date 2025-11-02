@@ -1,6 +1,8 @@
-import types.Order;
-import types.Product;
-import types.User;
+package edu.upc.dsa;
+
+import edu.upc.dsa.types.Order;
+import edu.upc.dsa.types.Product;
+import edu.upc.dsa.types.User;
 import java.util.*;
 
 import java.util.List;

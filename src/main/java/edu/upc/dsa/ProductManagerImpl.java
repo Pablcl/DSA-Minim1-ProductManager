@@ -1,6 +1,8 @@
-import types.Product;
-import types.User;
-import types.Order;
+package edu.upc.dsa;
+
+import edu.upc.dsa.types.Product;
+import edu.upc.dsa.types.User;
+import edu.upc.dsa.types.Order;
 import java.util.*;
 import java.util.Comparator; //interfaz comparator
 import org.apache.log4j.Logger;
@@ -102,7 +104,7 @@ public class ProductManagerImpl implements ProductManager { //Implementamos una 
             User user = this.users.get(orderAEntregar.getUserId());
             if (user != null){
                 user.addOrder(orderAEntregar);
-                //actualizamos num ventas
+                //actualizamos num ventas, como? se recorre cada enrty del pedido pillo el valor y se lo sumo al numofsales original de ese producto
                 for (Map.Entry<String, Integer> entry : orderAEntregar.getProducts().entrySet()) {
                     Product p = this.getProduct(entry.getKey());
                     if (p != null) {

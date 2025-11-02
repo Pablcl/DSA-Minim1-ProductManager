@@ -1,5 +1,4 @@
-package types;
-import java.util.*;
+package edu.upc.dsa.types;
 
 public class Product {
 
@@ -14,7 +13,9 @@ public class Product {
         this.numofsales = numofsales;
         this.price = price;
     }
-
+    public Product(){
+        
+    }
     public void setId (String id){
         this.id = id;
     }
